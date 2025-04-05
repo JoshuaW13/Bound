@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca7ifeohipfkm"]
+
+[ext_resource type="Script" uid="uid://d0s3khvay11a5" path="res://entities/Warren/warren_sickle_claw.gd" id="1_o7n7f"]
+[ext_resource type="Texture2D" uid="uid://d1fs0o55v1hu5" path="res://icon.svg" id="1_sxvkd"]
+
+[node name="WarrenSickleClaw" type="CharacterBody2D"]
+script = ExtResource("1_o7n7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sxvkd")
