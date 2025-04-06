@@ -13,6 +13,8 @@ func process_physics(delta: float) -> State:
 	
 	parent.velocity.x = horizontal_movement
 	parent.velocity.y = vertical_movement
+	if parent.velocity.length()>1:
+		parent.velocity.normalized()
 	parent.move_and_slide()
 	
 	return null
