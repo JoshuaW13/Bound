@@ -10,7 +10,7 @@ var move_speed: float = 400
 var parent: CharacterBody2D
 
 func enter() -> void:
-	parent.animations.play(animation_name)
+	pass
 
 func exit() -> void:
 	pass

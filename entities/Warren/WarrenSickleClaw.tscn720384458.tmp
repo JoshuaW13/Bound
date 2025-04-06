@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://d0s3khvay11a5" path="res://entities/Warren/warren_sickle_claw.gd" id="1_o7n7f"]
 [ext_resource type="Texture2D" uid="uid://d1fs0o55v1hu5" path="res://icon.svg" id="1_sxvkd"]
 [ext_resource type="PackedScene" uid="uid://ne4r1nl67m2r" path="res://common/StateMachine/StateMachine.tscn" id="3_aptfr"]
-[ext_resource type="Script" uid="uid://cup8jxh3emp1h" path="res://entities/Warren/States/idleState.gd" id="4_avnjx"]
-[ext_resource type="Script" uid="uid://b33eew0pcvmub" path="res://entities/Warren/States/moveState.gd" id="5_rs1tc"]
+[ext_resource type="Script" uid="uid://cup8jxh3emp1h" path="res://entities/Warren/States/IdleState.gd" id="4_avnjx"]
+[ext_resource type="Script" uid="uid://b33eew0pcvmub" path="res://entities/Warren/States/MoveState.gd" id="5_rs1tc"]
 
 [node name="WarrenSickleClaw" type="CharacterBody2D"]
 script = ExtResource("1_o7n7f")
@@ -12,12 +12,11 @@ script = ExtResource("1_o7n7f")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_sxvkd")
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_aptfr")]
-starting_state = NodePath("Idle")
+[node name="StateMachine" parent="." instance=ExtResource("3_aptfr")]
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state")]
 script = ExtResource("4_avnjx")
-move_state = NodePath("../Move")
+move_state = NodePath(".")
 
 [node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("5_rs1tc")
