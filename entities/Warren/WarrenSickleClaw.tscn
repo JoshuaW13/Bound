@@ -1,16 +1,49 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca7ifeohipfkm"]
+[gd_scene load_steps=12 format=3 uid="uid://ca7ifeohipfkm"]
 
 [ext_resource type="Script" uid="uid://d0s3khvay11a5" path="res://entities/Warren/warren_sickle_claw.gd" id="1_o7n7f"]
-[ext_resource type="Texture2D" uid="uid://d1fs0o55v1hu5" path="res://icon.svg" id="1_sxvkd"]
+[ext_resource type="Texture2D" uid="uid://c60ykq227jf0f" path="res://entities/Warren/Assets/Body.png" id="2_avnjx"]
+[ext_resource type="Texture2D" uid="uid://c6ce1y8yy3h6m" path="res://entities/Warren/Assets/Cape.png" id="2_ln67u"]
 [ext_resource type="PackedScene" uid="uid://ne4r1nl67m2r" path="res://common/StateMachine/StateMachine.tscn" id="3_aptfr"]
+[ext_resource type="Texture2D" uid="uid://b51jirjv2s7r2" path="res://entities/Warren/Assets/Spear.png" id="3_cav8y"]
+[ext_resource type="Texture2D" uid="uid://dvo4t7hck76yi" path="res://entities/Warren/Assets/Arms.png" id="3_rs1tc"]
 [ext_resource type="Script" uid="uid://cup8jxh3emp1h" path="res://entities/Warren/States/idleState.gd" id="4_avnjx"]
+[ext_resource type="Texture2D" uid="uid://b3doxh8y0q26u" path="res://entities/Warren/Assets/Legs.png" id="4_qn5su"]
 [ext_resource type="Script" uid="uid://b33eew0pcvmub" path="res://entities/Warren/States/moveState.gd" id="5_rs1tc"]
+[ext_resource type="Texture2D" uid="uid://b4pqdffngu1d0" path="res://entities/Warren/Assets/Cloack.png" id="7_mmmdr"]
+[ext_resource type="Texture2D" uid="uid://djwh4qy4wmik8" path="res://entities/Warren/Assets/Head.png" id="8_yawvv"]
 
 [node name="WarrenSickleClaw" type="CharacterBody2D"]
 script = ExtResource("1_o7n7f")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_sxvkd")
+[node name="CompositeSprite" type="Node" parent="."]
+
+[node name="Cape" type="Sprite2D" parent="CompositeSprite"]
+texture = ExtResource("2_ln67u")
+hframes = 7
+
+[node name="Spear" type="Sprite2D" parent="CompositeSprite"]
+texture = ExtResource("3_cav8y")
+hframes = 7
+
+[node name="Legs" type="Sprite2D" parent="CompositeSprite"]
+texture = ExtResource("4_qn5su")
+hframes = 7
+
+[node name="Body" type="Sprite2D" parent="CompositeSprite"]
+texture = ExtResource("2_avnjx")
+hframes = 7
+
+[node name="Arms" type="Sprite2D" parent="CompositeSprite"]
+texture = ExtResource("3_rs1tc")
+hframes = 7
+
+[node name="Cloak" type="Sprite2D" parent="CompositeSprite"]
+texture = ExtResource("7_mmmdr")
+hframes = 7
+
+[node name="Head" type="Sprite2D" parent="CompositeSprite"]
+texture = ExtResource("8_yawvv")
+hframes = 7
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_aptfr")]
 starting_state = NodePath("Idle")
