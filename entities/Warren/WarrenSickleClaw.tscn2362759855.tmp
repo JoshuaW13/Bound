@@ -86,5 +86,3 @@ idle_state = NodePath("../Idle")
 libraries = {
 &"": SubResource("AnimationLibrary_rs1tc")
 }
-
-[connection signal="facing_changed" from="StateMachine/Move" to="StateMachine/Move" method="_on_facing_changed"]

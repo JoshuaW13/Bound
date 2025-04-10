@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4pqdffngu1d0"
-path="res://.godot/imported/Cloack.png-7edd76c59f57e93d1301230a764f0acb.ctex"
+uid="uid://c6ce1y8yy3h6m"
+path="res://.godot/imported/Cape.png-fdffb4c5f1723bb1926322cb7eaff0d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/Warren/Assets/Cloack.png"
-dest_files=["res://.godot/imported/Cloack.png-7edd76c59f57e93d1301230a764f0acb.ctex"]
+source_file="res://entities/Warren/Assets/SpriteSheets/Cape.png"
+dest_files=["res://.godot/imported/Cape.png-fdffb4c5f1723bb1926322cb7eaff0d5.ctex"]
 
 [params]
 

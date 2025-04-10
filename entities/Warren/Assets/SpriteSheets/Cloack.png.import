@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b51jirjv2s7r2"
-path="res://.godot/imported/Spear.png-548d731b4c5c3de8ae183d1c23b4cea0.ctex"
+uid="uid://b4pqdffngu1d0"
+path="res://.godot/imported/Cloack.png-6ba2776542497a7e42792ae948f46b75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/Warren/Assets/Spear.png"
-dest_files=["res://.godot/imported/Spear.png-548d731b4c5c3de8ae183d1c23b4cea0.ctex"]
+source_file="res://entities/Warren/Assets/SpriteSheets/Cloack.png"
+dest_files=["res://.godot/imported/Cloack.png-6ba2776542497a7e42792ae948f46b75.ctex"]
 
 [params]
 

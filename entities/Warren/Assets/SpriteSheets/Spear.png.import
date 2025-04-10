@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c60ykq227jf0f"
-path="res://.godot/imported/Body.png-c6cf13237e6c8fe9bf75d4c27fa175ae.ctex"
+uid="uid://b51jirjv2s7r2"
+path="res://.godot/imported/Spear.png-0fb85db238d5ce2ac8932a10c57f6ab6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/Warren/Assets/Body.png"
-dest_files=["res://.godot/imported/Body.png-c6cf13237e6c8fe9bf75d4c27fa175ae.ctex"]
+source_file="res://entities/Warren/Assets/SpriteSheets/Spear.png"
+dest_files=["res://.godot/imported/Spear.png-0fb85db238d5ce2ac8932a10c57f6ab6.ctex"]
 
 [params]
 
