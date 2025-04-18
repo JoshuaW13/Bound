@@ -1,15 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://ca7ifeohipfkm"]
+[gd_scene load_steps=11 format=3 uid="uid://ca7ifeohipfkm"]
 
 [ext_resource type="Script" uid="uid://d0s3khvay11a5" path="res://entities/Warren/warren_sickle_claw.gd" id="1_o7n7f"]
 [ext_resource type="Texture2D" uid="uid://bx3q06umoac21" path="res://entities/Warren/Assets/SpriteSheets/WarrenSickleClaw-Sheet.png" id="2_aptfr"]
 [ext_resource type="PackedScene" uid="uid://ne4r1nl67m2r" path="res://common/StateMachine/StateMachine.tscn" id="3_aptfr"]
 [ext_resource type="Script" uid="uid://cup8jxh3emp1h" path="res://entities/Warren/States/idleState.gd" id="4_avnjx"]
 [ext_resource type="Script" uid="uid://b33eew0pcvmub" path="res://entities/Warren/States/moveState.gd" id="5_rs1tc"]
+[ext_resource type="Script" uid="uid://dbeu5h774mc0n" path="res://entities/Warren/States/dash_state.gd" id="6_avnjx"]
 
-[sub_resource type="Animation" id="Animation_aptfr"]
-resource_name = "Walk"
-length = 0.6
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_rs1tc"]
+resource_name = "Idle"
+length = 0.1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,10 +18,10 @@ tracks/0/path = NodePath("CharacterSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1, 2, 3, 4, 5, 6]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_avnjx"]
@@ -39,9 +39,10 @@ tracks/0/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_rs1tc"]
-resource_name = "Idle"
-length = 0.1
+[sub_resource type="Animation" id="Animation_aptfr"]
+resource_name = "Walk"
+length = 0.6
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -50,10 +51,10 @@ tracks/0/path = NodePath("CharacterSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [1, 2, 3, 4, 5, 6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rs1tc"]
@@ -74,17 +75,27 @@ frame = 1
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_aptfr")]
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "dash_state")]
 script = ExtResource("4_avnjx")
 move_state = NodePath("../Move")
+dash_state = NodePath("../Dash")
 
-[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "dash_state")]
 script = ExtResource("5_rs1tc")
 idle_state = NodePath("../Idle")
+dash_state = NodePath("../Dash")
+
+[node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state")]
+script = ExtResource("6_avnjx")
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
+
+[node name="DashTimer" type="Timer" parent="StateMachine/Dash"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_rs1tc")
 }
 
-[connection signal="facing_changed" from="StateMachine/Move" to="StateMachine/Move" method="_on_facing_changed"]
+[connection signal="facing_changed" from="." to="." method="_on_facing_changed"]
+[connection signal="timeout" from="StateMachine/Dash/DashTimer" to="StateMachine/Dash" method="_on_dash_timer_timeout"]
