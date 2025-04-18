@@ -85,8 +85,6 @@ script = ExtResource("5_rs1tc")
 idle_state = NodePath("../Idle")
 dash_state = NodePath("../Dash")
 
-[node name="DiagonalMoveTimer" type="Timer" parent="StateMachine/Move"]
-
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state")]
 script = ExtResource("6_avnjx")
 idle_state = NodePath("../Idle")
@@ -100,5 +98,4 @@ libraries = {
 }
 
 [connection signal="facing_changed" from="." to="." method="_on_facing_changed"]
-[connection signal="timeout" from="StateMachine/Move/DiagonalMoveTimer" to="StateMachine/Move" method="_on_diagonal_move_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Dash/DashTimer" to="StateMachine/Dash" method="_on_dash_timer_timeout"]
