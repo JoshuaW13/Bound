@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ne4r1nl67m2r" path="res://common/StateMachine/StateMachine.tscn" id="3_aptfr"]
 [ext_resource type="Script" uid="uid://cup8jxh3emp1h" path="res://entities/Warren/States/idleState.gd" id="4_avnjx"]
 [ext_resource type="Script" uid="uid://b33eew0pcvmub" path="res://entities/Warren/States/moveState.gd" id="5_rs1tc"]
-[ext_resource type="Script" uid="uid://dbeu5h774mc0n" path="res://entities/Warren/States/dash_state.gd" id="6_avnjx"]
+[ext_resource type="Script" uid="uid://dbeu5h774mc0n" path="res://entities/Warren/States/rollState.gd" id="6_avnjx"]
 
 [sub_resource type="Animation" id="Animation_rs1tc"]
 resource_name = "Idle"
@@ -78,19 +78,19 @@ starting_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "dash_state")]
 script = ExtResource("4_avnjx")
 move_state = NodePath("../Move")
-dash_state = NodePath("../Dash")
+dash_state = NodePath("../Roll")
 
-[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "dash_state")]
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "roll_state")]
 script = ExtResource("5_rs1tc")
 idle_state = NodePath("../Idle")
-dash_state = NodePath("../Dash")
+roll_state = NodePath("../Roll")
 
-[node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state")]
+[node name="Roll" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state")]
 script = ExtResource("6_avnjx")
 idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
 
-[node name="DashTimer" type="Timer" parent="StateMachine/Dash"]
+[node name="RollTimer" type="Timer" parent="StateMachine/Roll"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -98,4 +98,4 @@ libraries = {
 }
 
 [connection signal="facing_changed" from="." to="." method="_on_facing_changed"]
-[connection signal="timeout" from="StateMachine/Dash/DashTimer" to="StateMachine/Dash" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Roll/RollTimer" to="StateMachine/Roll" method="_on_dash_timer_timeout"]

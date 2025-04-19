@@ -1,7 +1,7 @@
 extends State
 
 @export var idle_state: State
-@export var dash_state: State
+@export var roll_state: State
 @onready var diagonal_move_timer: int = 0
 
 var moving_diagonal: bool = false
@@ -14,8 +14,8 @@ func get_input_vector() -> Vector2:
 func is_idle_input(input_vector: Vector2) -> bool:
 	return input_vector == Vector2.ZERO
 
-func is_dash_pressed() -> bool:
-	return Input.is_action_just_pressed("dash")
+func is_roll_pressed() -> bool:
+	return Input.is_action_just_pressed("roll")
 
 func calculate_velocity(input_vector: Vector2) -> Vector2:
 	if input_vector.length() == 0:
@@ -48,15 +48,15 @@ func apply_movement(velocity: Vector2) -> void:
 func enter() -> void:
 	animation_player.play("Walk")
 
-func process_physics(delta: float) -> State:
+func process_physics(_delta: float) -> State:
 	var input_vector = get_input_vector()
 
 	handle_diagonal_tracking(input_vector)
 
 	if is_idle_input(input_vector):
 		return idle_state
-	if is_dash_pressed():
-		return dash_state
+	if is_roll_pressed():
+		return roll_state
 
 	var velocity = calculate_velocity(input_vector)
 
