@@ -3,7 +3,7 @@ extends State
 @export var idle_state: State
 @export var move_state: State
 @export var dash_speed = 600
-@export var dash_time = 0.5
+@export var dash_time = 0.6
 
 @onready var dash_timer = $RollTimer
 
@@ -17,10 +17,7 @@ func setup_timer() -> void:
 func enter() -> void:
 	dashing = true
 	setup_timer()
-	pass
-
-func exit() -> void:
-	pass
+	animation_player.play("Roll")
 
 func process_input(_event: InputEvent) -> State:
 	return null
@@ -45,6 +42,5 @@ func process_physics(_delta: float) -> State:
 		return idle_state
 	return null
 
-
-func _on_dash_timer_timeout() -> void:
+func _on_roll_timer_timeout() -> void:
 	dashing = false
