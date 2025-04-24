@@ -1,3 +1,4 @@
+class_name WarrenSickleClaw
 extends CharacterBody2D
 
 signal facing_changed

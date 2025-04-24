@@ -1,4 +1,4 @@
-extends State
+extends PlayerState
 
 @export var idle_state: State
 @export var move_state: State
