@@ -15,7 +15,7 @@ func is_idle_input(input_vector: Vector2) -> bool:
 	return input_vector == Vector2.ZERO
 
 func is_roll_pressed() -> bool:
-	return Input.is_action_just_pressed("roll")
+	return Input.is_action_just_pressed("roll") and parent.can_roll
 
 func calculate_velocity(input_vector: Vector2) -> Vector2:
 	if input_vector.length() == 0:

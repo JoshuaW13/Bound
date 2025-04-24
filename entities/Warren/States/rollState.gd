@@ -6,6 +6,7 @@ extends State
 @export var dash_time = 0.6
 
 @onready var dash_timer = $RollTimer
+@onready var roll_cooldown_timer = $"../../RollCooldownTimer"
 
 var dashing: bool = false
 
@@ -44,3 +45,5 @@ func process_physics(_delta: float) -> State:
 
 func _on_roll_timer_timeout() -> void:
 	dashing = false
+	parent.can_roll = false
+	roll_cooldown_timer.start()

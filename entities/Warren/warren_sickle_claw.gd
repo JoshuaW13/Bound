@@ -6,6 +6,7 @@ signal facing_changed
 @onready var animation_player = $AnimationPlayer
 
 var last_velocity: Vector2 = Vector2(1,0);
+var can_roll = true;
 var animationFacing = "right":
 	get:
 		return animationFacing
@@ -41,6 +42,8 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	movement_state_machine.process_frame(delta)
 
-
 func _on_facing_changed() -> void:
 	scale.x=-1
+
+func _on_roll_cooldown_timer_timeout() -> void:
+	can_roll = true
