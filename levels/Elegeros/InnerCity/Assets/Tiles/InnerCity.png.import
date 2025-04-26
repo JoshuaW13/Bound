@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmn8ts6rnucio"
-path="res://.godot/imported/InnerCity-Sheet.png-590dc32eed39577057a27587df0b715c.ctex"
+uid="uid://ckiqyirv13enl"
+path="res://.godot/imported/InnerCity.png-05503a3cdbd67adf9515be263bbd2bf2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/Elegeros/InnerCity/Assets/Tiles/InnerCity-Sheet.png"
-dest_files=["res://.godot/imported/InnerCity-Sheet.png-590dc32eed39577057a27587df0b715c.ctex"]
+source_file="res://levels/Elegeros/InnerCity/Assets/Tiles/InnerCity.png"
+dest_files=["res://.godot/imported/InnerCity.png-05503a3cdbd67adf9515be263bbd2bf2.ctex"]
 
 [params]
 
