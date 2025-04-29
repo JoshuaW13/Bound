@@ -43,6 +43,12 @@ roll={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Object"
+2d_physics/layer_2="Detection"
+2d_physics/layer_3="Visibility"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

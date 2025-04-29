@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://lmmlaug2id8v"]
+[gd_scene load_steps=4 format=4 uid="uid://lmmlaug2id8v"]
 
 [ext_resource type="TileSet" uid="uid://d1b570tiymi5x" path="res://levels/Elegeros/InnerCity/Assets/Tiles/InnerCity.tres" id="1_4femd"]
 [ext_resource type="PackedScene" uid="uid://ca7ifeohipfkm" path="res://entities/Warren/WarrenSickleClaw.tscn" id="1_uucho"]
+[ext_resource type="PackedScene" uid="uid://dqccpk4t137df" path="res://entities/enemies/ElegrothianKnight/ElegorthianKnight.tscn" id="3_ihu38"]
 
 [node name="World" type="Node2D"]
 
@@ -16,3 +17,6 @@ tile_map_data = PackedByteArray("AAD//wAAAwAAAAAAAAAAAAAAAwAAAAAAAAAAAAEAAwAAAAA
 tile_set = ExtResource("1_4femd")
 
 [node name="WarrenSickleClaw" parent="." instance=ExtResource("1_uucho")]
+
+[node name="ElegorthianKnight" parent="." instance=ExtResource("3_ihu38")]
+position = Vector2(-230, -721)

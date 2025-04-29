@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqccpk4t137df"]
+
+[ext_resource type="Script" uid="uid://dyo546l5ashju" path="res://entities/enemies/ElegrothianKnight/elegorthian_knight.gd" id="1_j72fq"]
+[ext_resource type="Texture2D" uid="uid://d1fs0o55v1hu5" path="res://icon.svg" id="1_yb62k"]
+[ext_resource type="PackedScene" uid="uid://ne4r1nl67m2r" path="res://common/StateMachine/StateMachine.tscn" id="3_oxd4f"]
+[ext_resource type="Script" uid="uid://bdvdb8dmjv13l" path="res://entities/enemies/ElegrothianKnight/States/idleState.gd" id="4_wug3h"]
+[ext_resource type="Script" uid="uid://y3cuaev0gc8j" path="res://entities/enemies/ElegrothianKnight/pursuitState.gd" id="5_wug3h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxd4f"]
+radius = 683.105
+
+[node name="ElegorthianKnight" type="CharacterBody2D"]
+script = ExtResource("1_j72fq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.492188)
+texture = ExtResource("1_yb62k")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_oxd4f")]
+starting_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("pursuit_state")]
+script = ExtResource("4_wug3h")
+pursuit_state = NodePath("../Pursuit")
+
+[node name="Pursuit" type="Node" parent="StateMachine"]
+script = ExtResource("5_wug3h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ObservationArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObservationArea"]
+shape = SubResource("CircleShape2D_oxd4f")
+debug_color = Color(0.128921, 0.62479, 0.479855, 0.42)
+
+[connection signal="area_entered" from="ObservationArea" to="StateMachine/Idle" method="_on_observation_area_area_entered"]
+[connection signal="area_entered" from="ObservationArea" to="StateMachine/Pursuit" method="_on_observation_area_area_entered"]
